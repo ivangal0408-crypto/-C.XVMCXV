@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Иван Галь — ИИ-автоматизация для бизнеса</title>
+  <meta name="description" content="Иван Галь — IT-предприниматель. Сайты, Telegram-боты, мини-приложения и ИИ-автоматизации для бизнеса.">
+  <meta name="theme-color" content="#070709">
+  <meta property="og:title" content="Иван Галь — ИИ-автоматизация для бизнеса">
+  <meta property="og:description" content="Автоматизирую рутину бизнеса с помощью ИИ.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070709'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23F0A43A' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23F0A43A'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">К содержимому</a>
+
+  <!-- ═══ INTRO: film leader ═══ -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__bar intro__bar--top"></div>
+    <div class="intro__bar intro__bar--bottom"></div>
+    <div class="leader">
+      <div class="leader__sweep"></div>
+      <svg class="leader__rings" viewBox="0 0 200 200"><circle cx="100" cy="100" r="92"/><circle cx="100" cy="100" r="70"/><line x1="100" y1="0" x2="100" y2="200"/><line x1="0" y1="100" x2="200" y2="100"/></svg>
+      <span class="leader__num" id="leaderNum">3</span>
+    </div>
+    <div class="intro__titles">
+      <p class="intro__presents" data-i18n="intro.presents">Gal Studio представляет</p>
+      <p class="intro__name" data-i18n="intro.name">Иван Галь</p>
+    </div>
+    <button class="intro__skip" id="introSkip" type="button" data-i18n="intro.skip">Пропустить ›</button>
+  </div>
+
+  <!-- ═══ HUD / NAV ═══ -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#home" aria-label="Ivan Gal — home">
+      <span class="nav__logo-mark" aria-hidden="true"></span>
+      <span class="nav__logo-text">IVAN&nbsp;GAL</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#home" data-i18n="nav.home">Обо мне</a>
+      <a href="#resume" data-i18n="nav.resume">Резюме</a>
+      <a href="#idea" data-i18n="nav.idea">Бизнес-идея</a>
+      <a href="#blog" data-i18n="nav.blog">Блог</a>
+      <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
+    </nav>
+    <div class="nav__tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn--ghost btn--sm nav__in js-linkedin" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4V9.5Z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="#home"><i>01</i><span data-i18n="nav.home">Обо мне</span></a>
+      <a href="#resume"><i>02</i><span data-i18n="nav.resume">Резюме</span></a>
+      <a href="#idea"><i>03</i><span data-i18n="nav.idea">Бизнес-идея</span></a>
+      <a href="#blog"><i>04</i><span data-i18n="nav.blog">Блог</span></a>
+      <a href="#contacts"><i>05</i><span data-i18n="nav.contacts">Контакты</span></a>
+    </nav>
+  </div>
+
+  <div class="hud" aria-hidden="true">
+    <span class="hud__rec"><b></b>REC <span id="timecode">00:00:00:00</span></span>
+    <span class="hud__scene"><span id="hudScene">SC 01</span> / 05</span>
+  </div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <main id="main">
+    <!-- ═══ SCENE 01 — HOME / ABOUT ═══ -->
+    <section class="scene hero" id="home" data-scene="01">
+      <div class="leak leak--a" aria-hidden="true"></div>
+      <div class="leak leak--b" aria-hidden="true"></div>
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span data-i18n="hero.eyebrow">Сцена 01 — Главная</span></p>
+          <h1 class="hero__name">
+            <span class="split line" data-i18n="hero.first">Иван</span>
+            <span class="split line line--italic" data-i18n="hero.last">Галь</span>
+          </h1>
+          <p class="hero__role reveal" data-i18n="hero.role">IT-предприниматель · ИИ-автоматизации · Telegram-боты · Сайты</p>
+          <p class="hero__uvp reveal" data-i18n="hero.uvp">Автоматизирую рутину бизнеса с&nbsp;помощью ИИ — вы растёте, а&nbsp;не&nbsp;тонете в&nbsp;задачах.</p>
+          <div class="hero__cta reveal">
+            <a class="btn btn--accent magnetic" href="#resume"><span data-i18n="hero.cta">Смотреть работы</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--ghost magnetic js-linkedin" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4V9.5Z"/></svg>
+              <span data-i18n="hero.linkedin">Профиль LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <figure class="portrait reveal" id="portrait">
+          <div class="portrait__film">
+            <div class="portrait__frame">
+              <img src="assets/photo.jpg" alt="Иван Галь" data-i18n-alt="hero.photoAlt" width="800" height="1000" decoding="async" onerror="this.closest('.portrait').classList.add('is-mono');this.remove()">
+              <div class="portrait__mono" aria-hidden="true"><span data-i18n="hero.mono">ИГ</span></div>
+              <div class="portrait__scan" aria-hidden="true"></div>
+            </div>
+          </div>
+          <figcaption><span>FRAME 001</span><span>35MM · F/1.4</span></figcaption>
+        </figure>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll"><span data-i18n="hero.scroll">Листайте</span><i></i></a>
+    </section>
+
+    <section class="scene about" id="about" data-scene="01">
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow__dot"></span><span data-i18n="about.eyebrow">Сцена 01.2 — Обо мне</span></p>
+        <p class="about__lead scrub" data-i18n="about.text">Мне 19, я IT-предприниматель и студент РЭУ им. Г.В. Плеханова. Делаю сайты, Telegram-ботов, мини-приложения и ИИ-автоматизации, которые снимают с бизнеса рутину: заявки, ответы клиентам, отчёты. Мне интересно, как технологии превращаются в деньги и свободное время — для клиентов и для меня.</p>
+
+        <div class="about__facts">
+          <div class="fact reveal"><span class="fact__k" data-i18n="about.f1k">Фокус</span><span class="fact__v" data-i18n="about.f1v">ИИ-автоматизации</span></div>
+          <div class="fact reveal"><span class="fact__k" data-i18n="about.f2k">Учёба</span><span class="fact__v" data-i18n="about.f2v">РЭУ им. Плеханова</span></div>
+          <div class="fact reveal"><span class="fact__k" data-i18n="about.f3k">Ищу</span><span class="fact__v" data-i18n="about.f3v">Клиентов и партнёров</span></div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>Python</span><span>JavaScript</span><span>Telegram Bot API</span><span>OpenAI API</span><span>Claude API</span><span>n8n</span><span>Make</span><span>Supabase</span><span>Next.js</span><span>Prompt Engineering</span>
+          <span>Python</span><span>JavaScript</span><span>Telegram Bot API</span><span>OpenAI API</span><span>Claude API</span><span>n8n</span><span>Make</span><span>Supabase</span><span>Next.js</span><span>Prompt Engineering</span>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2 class="h2"><span class="split" data-i18n="skills.title">Навыки</span></h2>
+        <ul class="skills">
+          <li class="skill reveal"><i>01</i><b data-i18n="skills.s1">ИИ-автоматизации</b><span data-i18n="skills.s1d">n8n, Make, LLM API: заявки, ответы, отчёты без ручной работы</span></li>
+          <li class="skill reveal"><i>02</i><b data-i18n="skills.s2">Telegram-боты и мини-аппы</b><span data-i18n="skills.s2d">Python, Telegram Bot API, Web Apps</span></li>
+          <li class="skill reveal"><i>03</i><b data-i18n="skills.s3">Веб-разработка</b><span data-i18n="skills.s3d">HTML/CSS/JS, Next.js, Supabase</span></li>
+          <li class="skill reveal"><i>04</i><b data-i18n="skills.s4">Промпт-инжиниринг</b><span data-i18n="skills.s4d">Ассистенты на базе OpenAI и Claude под задачи бизнеса</span></li>
+          <li class="skill reveal"><i>05</i><b data-i18n="skills.s5">Работа с клиентами</b><span data-i18n="skills.s5d">Сбор требований, ТЗ, презентация решения</span></li>
+          <li class="skill reveal"><i>06</i><b data-i18n="skills.s6">Продуктовое мышление</b><span data-i18n="skills.s6d">Считаю пользу автоматизации в часах и деньгах</span></li>
+        </ul>
+
+        <div class="media">
+          <article class="media__card reveal">
+            <div class="media__screen">
+              <span class="media__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="media__badge" data-i18n="media.soon">Премьера скоро</span>
+            </div>
+            <h3 data-i18n="media.videoT">Видеопрезентация</h3>
+            <p data-i18n="media.videoD">Кто я, чему учусь, что умею и какие возможности ищу — за 2 минуты.</p>
+          </article>
+          <article class="media__card reveal">
+            <div class="media__screen media__screen--audio">
+              <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <span class="media__badge" data-i18n="media.soon">Премьера скоро</span>
+            </div>
+            <h3 data-i18n="media.audioT">Аудиоистория</h3>
+            <p data-i18n="media.audioD">Один опыт, который сделал меня тем, кто я есть сегодня.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 02 — RESUME & PORTFOLIO ═══ -->
+    <section class="scene resume" id="resume" data-scene="02">
+      <div class="container">
+        <header class="scene__head">
+          <span class="scene__num" aria-hidden="true">02</span>
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span data-i18n="resume.eyebrow">Сцена 02 — Резюме и портфолио</span></p>
+          <h2 class="h2"><span class="split" data-i18n="resume.title">Путь и работы</span></h2>
+        </header>
+
+        <div class="timeline">
+          <div class="timeline__col reveal">
+            <h3 class="h3" data-i18n="resume.edu">Образование</h3>
+            <div class="tl-item">
+              <span class="tl-item__when" data-i18n="resume.now">Сейчас</span>
+              <b data-i18n="resume.eduT">РЭУ им. Г.В. Плеханова</b>
+              <span data-i18n="resume.eduD">Студент. Экономика и управление — фундамент для IT-бизнеса.</span>
+            </div>
+          </div>
+          <div class="timeline__col reveal">
+            <h3 class="h3" data-i18n="resume.exp">Опыт</h3>
+            <div class="tl-item">
+              <span class="tl-item__when" data-i18n="resume.now">Сейчас</span>
+              <b data-i18n="resume.expT">Собственная практика · IT-предприниматель</b>
+              <span data-i18n="resume.expD">Сайты, Telegram-боты, мини-приложения и ИИ-автоматизации для малого бизнеса.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cv reveal">
+          <a class="btn btn--ghost is-disabled" aria-disabled="true" href="#resume" data-cv="view"><span data-i18n="resume.cvView">Посмотреть резюме</span></a>
+          <a class="btn btn--ghost is-disabled" aria-disabled="true" href="#resume" data-cv="download"><span data-i18n="resume.cvDl">Скачать PDF</span></a>
+          <span class="cv__note" data-i18n="resume.cvNote">PDF-версия — в монтаже</span>
+        </div>
+      </div>
+
+      <div class="reel" id="reel">
+        <div class="reel__track" id="reelTrack">
+          <article class="case">
+            <div class="case__top"><i>CASE 01</i><span class="tag" data-i18n="case.draft">черновик</span></div>
+            <h3 data-i18n="case1.t">Telegram-бот для записи клиентов</h3>
+            <dl>
+              <dt data-i18n="case.task">Задача</dt><dd data-i18n="case1.task">Студия теряла заявки вечером и в выходные.</dd>
+              <dt data-i18n="case.did">Что сделал</dt><dd data-i18n="case1.did">Бот на Python: ИИ отвечает на частые вопросы, записывает клиента в таблицу и уведомляет администратора.</dd>
+              <dt data-i18n="case.result">Результат</dt><dd data-i18n="case1.result">Заявки принимаются 24/7, администратор получает готовую запись.</dd>
+            </dl>
+            <ul class="chips"><li>Python</li><li>Telegram Bot API</li><li>OpenAI API</li><li>Google Sheets</li></ul>
+          </article>
+          <article class="case">
+            <div class="case__top"><i>CASE 02</i><span class="tag" data-i18n="case.draft">черновик</span></div>
+            <h3 data-i18n="case2.t">ИИ-обработка заявок в n8n</h3>
+            <dl>
+              <dt data-i18n="case.task">Задача</dt><dd data-i18n="case2.task">Заявки с сайта вручную переносились в CRM.</dd>
+              <dt data-i18n="case.did">Что сделал</dt><dd data-i18n="case2.did">Сценарий n8n: форма → ИИ классифицирует заявку → карточка в CRM → уведомление в Telegram.</dd>
+              <dt data-i18n="case.result">Результат</dt><dd data-i18n="case2.result">Менеджер сразу видит приоритет и суть запроса, без ручного копирования.</dd>
+            </dl>
+            <ul class="chips"><li>n8n</li><li>Webhooks</li><li>LLM API</li><li>Supabase</li></ul>
+          </article>
+          <article class="case case--live">
+            <div class="case__top"><i>CASE 03</i><span class="tag tag--live" data-i18n="case.live">в эфире</span></div>
+            <h3 data-i18n="case3.t">Этот сайт</h3>
+            <dl>
+              <dt data-i18n="case.task">Задача</dt><dd data-i18n="case3.task">Персональный сайт-портфолио, который запоминается.</dd>
+              <dt data-i18n="case.did">Что сделал</dt><dd data-i18n="case3.did">HTML/CSS/JS + GSAP, кинематографичные анимации, язык по региону посетителя. ИИ — для структуры и кода, доработка — вручную.</dd>
+              <dt data-i18n="case.result">Результат</dt><dd data-i18n="case3.result">Сайт опубликован на GitHub Pages и работает на телефоне и ПК.</dd>
+            </dl>
+            <ul class="chips"><li>HTML/CSS</li><li>JavaScript</li><li>GSAP</li><li>GitHub Pages</li><li>AI</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 03 — BUSINESS IDEA ═══ -->
+    <section class="scene idea" id="idea" data-scene="03">
+      <div class="leak leak--c" aria-hidden="true"></div>
+      <div class="container">
+        <header class="scene__head">
+          <span class="scene__num" aria-hidden="true">03</span>
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span data-i18n="idea.eyebrow">Сцена 03 — Моя бизнес-идея</span></p>
+          <h2 class="h2"><span class="split" data-i18n="idea.title">ИИ-администратор</span></h2>
+          <p class="idea__sub reveal" data-i18n="idea.sub">Цифровой сотрудник для малого бизнеса: отвечает клиентам, записывает и не теряет ни одной заявки.</p>
+        </header>
+
+        <div class="canvas4">
+          <div class="cell reveal"><i>A</i><h3 data-i18n="idea.aud">Целевая аудитория</h3><p data-i18n="idea.audD">Салоны, студии, онлайн-школы и локальные сервисы, где заявки идут через мессенджеры.</p></div>
+          <div class="cell reveal"><i>B</i><h3 data-i18n="idea.prob">Проблема</h3><p data-i18n="idea.probD">Менеджеры не успевают отвечать: часть заявок теряется вечером и в выходные, клиенты уходят к конкурентам.</p></div>
+          <div class="cell reveal"><i>C</i><h3 data-i18n="idea.sol">Решение</h3><p data-i18n="idea.solD">Telegram-бот с ИИ на базе знаний компании: отвечает, уточняет детали, записывает и передаёт «тёплую» заявку человеку.</p></div>
+          <div class="cell cell--accent reveal"><i>D</i><h3 data-i18n="idea.val">Ценностное предложение</h3><p data-i18n="idea.valD">Ответ клиенту за секунды, 24/7 — без найма ещё одного сотрудника.</p></div>
+        </div>
+
+        <h3 class="h3 steps__title reveal" data-i18n="idea.how">Как это работает — 3 шага</h3>
+        <ol class="steps" id="steps">
+          <li class="step"><span class="step__n">1</span><b data-i18n="idea.s1">Аудит</b><p data-i18n="idea.s1d">Разбираем, где теряются заявки и время.</p></li>
+          <li class="step"><span class="step__n">2</span><b data-i18n="idea.s2">Запуск</b><p data-i18n="idea.s2d">Настраиваю бота и базу знаний за 1–2 недели.</p></li>
+          <li class="step"><span class="step__n">3</span><b data-i18n="idea.s3">Рост</b><p data-i18n="idea.s3d">Меряем результат и расширяем автоматизацию.</p></li>
+          <svg class="steps__line" viewBox="0 0 1000 4" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="2" x2="1000" y2="2"/></svg>
+        </ol>
+
+        <div class="idea__cta reveal">
+          <a class="btn btn--accent btn--lg magnetic" href="#contacts"><span data-i18n="idea.cta">Обсудить автоматизацию</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 04 — BLOG ═══ -->
+    <section class="scene blog" id="blog" data-scene="04">
+      <div class="container">
+        <header class="scene__head">
+          <span class="scene__num" aria-hidden="true">04</span>
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span data-i18n="blog.eyebrow">Сцена 04 — Блог / Публикации</span></p>
+          <h2 class="h2"><span class="split" data-i18n="blog.title">Мысли вслух</span></h2>
+        </header>
+
+        <article class="post reveal">
+          <div class="post__meta"><span data-i18n="blog.tag">ИИ и бизнес</span><span data-i18n="blog.time">2 мин чтения</span></div>
+          <h3 class="post__title" data-i18n="blog.postT">ИИ-автоматизация: не замена людей, а возврат времени</h3>
+          <p class="post__excerpt" data-i18n="blog.postE">Почему бизнесу не нужен «робот, который всех уволит», и с какого одного процесса стоит начинать.</p>
+          <button class="btn btn--ghost" type="button" id="openPost"><span data-i18n="blog.read">Читать статью</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══ SCENE 05 — CONTACTS ═══ -->
+    <section class="scene contacts" id="contacts" data-scene="05">
+      <div class="leak leak--d" aria-hidden="true"></div>
+      <div class="container">
+        <header class="scene__head">
+          <span class="scene__num" aria-hidden="true">05</span>
+          <p class="eyebrow"><span class="eyebrow__dot"></span><span data-i18n="contacts.eyebrow">Сцена 05 — Контакты</span></p>
+          <h2 class="contacts__title"><span class="split line" data-i18n="contacts.t1">Снимем</span><span class="split line line--italic" data-i18n="contacts.t2">следующую сцену</span><span class="split line" data-i18n="contacts.t3">вместе?</span></h2>
+        </header>
+        <div class="contacts__links">
+          <a class="contact reveal magnetic js-linkedin" href="#" target="_blank" rel="noopener"><i>LinkedIn</i><span data-i18n="contacts.in">Профессиональный профиль</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <a class="contact reveal magnetic js-telegram" href="#" target="_blank" rel="noopener"><i>Telegram</i><span data-i18n="contacts.tg">Самый быстрый ответ</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <a class="contact reveal magnetic js-email" href="#"><i>Email</i><span class="js-email-text">—</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+
+      <footer class="credits">
+        <div class="credits__roll">
+          <p class="credits__h" data-i18n="credits.h">В ролях</p>
+          <dl>
+            <dt data-i18n="credits.dir">Режиссёр и продюсер</dt><dd>Ivan Gal</dd>
+            <dt data-i18n="credits.script">Сценарий</dt><dd data-i18n="credits.scriptV">Иван Галь при участии ИИ</dd>
+            <dt data-i18n="credits.code">Код</dt><dd>HTML · CSS · JavaScript · GSAP</dd>
+            <dt data-i18n="credits.host">Прокат</dt><dd>GitHub Pages</dd>
+          </dl>
+          <p class="credits__end">© <span id="year"></span> Ivan Gal · <span data-i18n="credits.end">Конец первой части</span></p>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <dialog class="reader" id="reader" aria-labelledby="readerTitle">
+    <div class="reader__inner">
+      <button class="reader__close" type="button" id="closePost" aria-label="Close">×</button>
+      <p class="eyebrow"><span class="eyebrow__dot"></span><span data-i18n="blog.tag">ИИ и бизнес</span></p>
+      <h2 id="readerTitle" data-i18n="blog.postT">ИИ-автоматизация: не замена людей, а возврат времени</h2>
+      <div class="reader__body" data-i18n-html="blog.body"></div>
+    </div>
+  </dialog>
+
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="config.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
